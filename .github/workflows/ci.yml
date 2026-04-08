@@ -53,4 +53,4 @@ jobs:
           docker stop chord-container || true
 
       - name: Run new container
-        run: docker run -d -p 8000:8000 --name chord-container ${{ secrets.DOCKERHUB_USERNAME }}/chord-recognizer:lates
+        run: docker run -d -p 8000:8000 --name chord-container ${{ secrets.DOCKERHUB_USERNAME }}/chord-recognizer:latest
