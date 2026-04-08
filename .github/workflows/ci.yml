@@ -33,7 +33,7 @@ jobs:
         with:
           context: .
           push: true
-          # Docker Hub 사용자 이름과 레포지토리 이름 작성
+          platforms: linux/amd64
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/chord-recognizer:latest
           # 빌드 시간 단축을 위한 원격 캐시 설정
           cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/chord-recognizer:buildcache
