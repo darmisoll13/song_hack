@@ -41,16 +41,13 @@ jobs:
   deploy:
       needs: build-and-push
       runs-on: self-hosted
-
+      
       steps:
         - name: Pull latest image
           run: docker pull ${{ secrets.DOCKERHUB_USERNAME }}/chord-recognizer:latest
 
-        - name: Stop old container
-          run: docker stop chord-container || true
-
-        - name: Remove old container
-          run: docker rm chord-container || true
+        - name: Remove old container (force)
+          run: docker rm -f chord-container || true
 
         - name: Run new container
           run: docker run -d -p 8000:8000 --name chord-container ${{ secrets.DOCKERHUB_USERNAME }}/chord-recognizer:latest
